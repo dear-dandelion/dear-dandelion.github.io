@@ -8,3 +8,6 @@ tools/node_modules/
 # 系统文件
 Thumbs.db
 .DS_Store
+
+# 演示视频(Bund Summit 投稿用,不入库)
+个人网页演示视频*.mp4
