@@ -12,6 +12,15 @@
   .gallery { grid-template-columns: 1fr 1fr; height: auto; }
   .gallery .photo:first-child { grid-column: 1 / -1; }
   .photo { min-height: 40vh; }
+  /* 知识库:数据列回到下方,恢复三列横排 */
+  .knowledge-layout { display: block; }
+  .knowledge-data.data-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 640px;
+    margin-left: 0;
+    margin-top: var(--space-3);
+  }
 }
 
 /* ---- 移动:竖向文档流(规格内行为,非缺陷) ---- */

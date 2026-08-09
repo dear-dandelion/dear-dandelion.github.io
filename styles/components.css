@@ -27,13 +27,14 @@
   gap: var(--space-2);
 }
 
-/* 标题:统一走 --text-display(与全站站标题同字号)+ 桌面单行不换行 */
+/* 标题:统一走 --text-display(与全站站标题同字号)+ 桌面单行不换行 + 上移15px */
 .hero-title {
   font-size: var(--text-display);
   font-weight: 100;
   letter-spacing: 0.02em;
   line-height: 1.35;
   white-space: nowrap;
+  margin-top: -15px;
 }
 
 /* 身份行与"985本科 CS BME"同级,不强调 */
@@ -133,6 +134,24 @@
 }
 .video-card.has-error .video-fallback { display: flex; }
 
+/* 知识库:视频+文案在左列,数据点移右侧栏(与视频同宽对齐) */
+.knowledge-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+.knowledge-main {
+  max-width: 560px; /* 与视频同宽,下方文案随之对齐 */
+}
+.knowledge-data.data-points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: 50px; /* 右栏左移 50px 微调 */
+}
+
 .data-points {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -162,6 +181,11 @@
 }
 .project { display: block; }
 .project-text { margin-bottom: var(--space-3); }
+
+/* 副行提示:次级灰,降级为附属信息 */
+.project-note {
+  color: var(--color-ink-2);
+}
 
 /* 媒体占比收缩:全部限制宽度,防溢出 */
 .project .mockup { max-width: 100%; }
