@@ -1,0 +1,342 @@
+/* ============================================================
+ * components.css — 六站组件规格(来源:DESIGN.md §5)
+ * ============================================================ */
+
+/* ---------- 站 0 始发站 ---------- */
+.station--hero {
+  position: relative;
+  justify-content: center;
+}
+
+/* 头像内联进身份行,替代名字 */
+.hero-avatar-inline {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+}
+
+/* 标题:统一走 --text-display(与全站站标题同字号)+ 桌面单行不换行 */
+.hero-title {
+  font-size: var(--text-display);
+  font-weight: 100;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+/* 身份行与"985本科 CS BME"同级,不强调 */
+.hero-identity {
+  color: var(--color-ink-2);
+  font-size: var(--text-h3);
+  font-weight: 400;
+}
+
+.hero-go {
+  margin-top: var(--space-2);
+  font-size: var(--text-body);
+  color: var(--color-ink);
+}
+
+.hero-arrow {
+  display: inline-block;
+  margin-left: 4px;
+  animation: nudge 1.6s var(--ease-out) infinite;
+}
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(8px); }
+}
+
+/* ---------- 站 1 跨界 ---------- */
+.node-list { max-width: 640px; }
+
+.node {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.node-key {
+  flex: 0 0 auto;
+  width: 88px;
+  padding-top: 4px;
+  font-size: var(--text-h3);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.node-key .node-idx {
+  display: block;
+  font-size: var(--text-small);
+  font-weight: 400;
+  color: var(--color-ink-2);
+  letter-spacing: 0.15em;
+}
+
+.node-body { max-width: 34em; }
+
+.node-photo {
+  margin-top: var(--space-3);
+  max-width: 340px;
+  border: 1px solid var(--color-ink-3);
+}
+.node-photo img {
+  width: 100%;
+  filter: contrast(1.05);
+}
+
+/* 卡间虚线轨道 — 装饰,禁动画 */
+.node-rail {
+  width: 1px;
+  height: 48px;
+  margin: var(--space-2) 0 var(--space-2) 43px; /* 对齐 node-key 中心 */
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-ink-3) 0 4px,
+    transparent 4px 9px
+  );
+}
+
+/* ---------- 站 2 知识库(视频压缩占比,自动播放) ---------- */
+.video-card {
+  position: relative;
+  max-width: 560px;
+  margin-bottom: var(--space-3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.video-card video {
+  display: block;
+  width: 100%;
+  background: #000;
+}
+
+.video-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  color: var(--color-ink-2);
+}
+.video-card.has-error .video-fallback { display: flex; }
+
+.data-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  max-width: 640px;
+}
+.data-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 100;
+  line-height: 1.2;
+}
+.data-label {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--text-small);
+  color: var(--color-ink-2);
+}
+
+/* ---------- 站 3 孵化场 ---------- */
+/* 孵化场:两项目并排双栏,信息完整一屏展示 */
+.project-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+.project { display: block; }
+.project-text { margin-bottom: var(--space-3); }
+
+/* 媒体占比收缩:全部限制宽度,防溢出 */
+.project .mockup { max-width: 100%; }
+.project-media { max-width: 400px; }
+
+.project-text h3 {
+  font-size: var(--text-h3);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+.project-text p { margin-bottom: var(--space-2); }
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-small);
+  color: var(--color-ink-2);
+  border: 1px solid var(--color-ink-3);
+  border-radius: 999px;
+  padding: 2px 12px;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  animation: breathe 2s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 1; }
+}
+
+/* 浏览器窗口 mockup(纯 CSS) */
+.mockup {
+  border: 1px solid var(--color-ink-3);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+.mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-ink-3);
+}
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-ink-3);
+}
+.mockup-addr {
+  flex: 1;
+  margin-left: 8px;
+  font-size: 11px;
+  color: var(--color-ink-2);
+  text-align: center;
+}
+.mockup img { width: 100%; }
+
+/* 游戏素材:两张纸片左右并排交叠,hover 的纸片置顶归正 */
+.game-stack {
+  position: relative;
+  display: flex;
+  width: 400px;
+  max-width: 100%;
+  margin-inline: auto;
+}
+.paper {
+  position: relative;
+  flex: 0 0 58%; /* 两张 58% + 负边距 -16% = 交叠区约 35px */
+  background: var(--color-bg);
+  border: 1px solid var(--color-ink-3);
+  border-radius: 2px;
+  padding: 6px;
+  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.1); /* 纸张深度的唯一例外 */
+  transition: transform 0.3s var(--ease-out);
+}
+.paper img { width: 100%; }
+.paper:first-child {
+  transform: rotate(-2deg);
+  margin-right: -16%;
+  z-index: 1;
+}
+.paper:last-child {
+  transform: rotate(1.5deg);
+  margin-top: 10px;
+  z-index: 2;
+}
+.paper:hover,
+.paper:focus-visible {
+  transform: rotate(0deg) translateY(-3px);
+  z-index: 5;
+}
+
+/* ---------- 站 4 审美(三图 4:3:3 列比,等高,地点浮层) ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: 4fr 3fr 3fr;
+  gap: var(--space-2);
+  height: 52vh;
+  height: 52dvh;
+}
+.photo {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-ink-3);
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 地点浮层 — 数据揭示交互(无参数,仅地点) */
+.photo-cap {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 10px 16px;
+  background: rgba(17, 17, 17, 0.72);
+  color: var(--color-bg);
+  font-size: var(--text-small);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+.photo:hover .photo-cap,
+.photo:focus-within .photo-cap { opacity: 1; transform: none; }
+
+/* ---------- 站 5 终点站 ---------- */
+.station--end { justify-content: center; }
+
+.end-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+
+.contact-list {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+  font-size: var(--text-body);
+}
+.contact-list a {
+  position: relative;
+  padding-bottom: 4px;
+  background-image: linear-gradient(var(--color-ink), var(--color-ink));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s var(--ease-out);
+}
+.contact-list a:hover,
+.contact-list a:focus-visible { background-size: 100% 1px; }
+
+.end-note {
+  margin-top: var(--space-5);
+  font-size: var(--text-small);
+  color: var(--color-ink-2);
+  font-style: italic;
+}
+
+/* ---------- 无脚本兜底 ---------- */
+.noscript-fallback { display: none; }
+noscript .noscript-fallback {
+  display: block;
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--color-ink-2);
+}

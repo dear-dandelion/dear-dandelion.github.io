@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Xu JF — 学生 · 产品人 · 生活体验者</title>
+  <meta name="description" content="985 CS 本科,即将攻读 BME 第二学位;1087 条笔记的 RAG 知识库;两件孵化中的作品;用摄影与审美对抗 AI 时代的同质化。">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://example.com/"><!-- TODO: 上线后替换为真实域名 -->
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Xu JF — 学生 · 产品人 · 生活体验者">
+  <meta property="og:description" content="我相信生活是灵感孵化的摇篮。985本科 CS BME。向右看,走近我。">
+  <meta property="og:image" content="assets/img/photo-forbidden-city.webp">
+  <meta property="og:locale" content="zh_CN">
+
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+
+  <!-- 无 JS 兜底:恢复可见性、显式滚动条、纵向回退 -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1; transform: none; }
+      .track { overflow-x: auto; }
+      .scrollbar-hide { scrollbar-width: auto; }
+      .scrollbar-hide::-webkit-scrollbar { display: block; }
+    </style>
+    <div class="noscript-fallback">本站推荐启用 JavaScript 获得完整横向浏览体验。</div>
+  </noscript>
+</head>
+<body>
+  <a class="skip-link" href="#station-0">跳到内容</a>
+
+  <!-- 顶部导航:站牌 + 进度条 -->
+  <header class="banner">
+    <nav class="station-nav" aria-label="站点导航">
+      <a class="station-nav-link" href="#station-0" aria-current="true"><span class="nav-num">01</span>始发站</a>
+      <a class="station-nav-link" href="#station-1"><span class="nav-num">02</span>跨界</a>
+      <a class="station-nav-link" href="#station-2"><span class="nav-num">03</span>知识库</a>
+      <a class="station-nav-link" href="#station-3"><span class="nav-num">04</span>孵化场</a>
+      <a class="station-nav-link" href="#station-4"><span class="nav-num">05</span>审美</a>
+      <a class="station-nav-link" href="#station-5"><span class="nav-num">06</span>终点站</a>
+    </nav>
+    <span class="nav-current" id="nav-current" aria-live="polite"></span>
+  </header>
+  <div class="progress" role="progressbar" aria-label="页面进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <!-- 横向轨道 -->
+  <main class="track scrollbar-hide" id="track">
+
+    <!-- 站 0 · 始发站 -->
+    <section class="station station--hero" id="station-0" aria-labelledby="hero-title" data-name="始发站">
+      <div class="station-inner hero-content">
+        <h1 class="hero-title reveal" id="hero-title">我相信生活是灵感孵化的摇篮。</h1>
+        <p class="hero-identity reveal" style="--reveal-delay: .12s">
+          <img class="hero-avatar-inline" src="assets/img/avatar.webp" width="28" height="28" fetchpriority="high" alt="Xu JF 头像">学生 / 产品人 / 生活体验者
+        </p>
+        <p class="hero-identity reveal" style="--reveal-delay: .24s">985本科 CS BME</p>
+        <p class="hero-go reveal" style="--reveal-delay: .36s">向右看,走近我 <span class="hero-arrow" aria-hidden="true">⟶</span></p>
+      </div>
+    </section>
+
+    <!-- 站 1 · 跨界 -->
+    <section class="station" id="station-1" aria-labelledby="s1-title" data-name="跨界">
+      <div class="station-inner">
+        <p class="station-meta reveal">01 / 跨界</p>
+        <h2 class="station-title reveal" id="s1-title" style="--reveal-delay: .08s">我不相信纯软件</h2>
+        <div class="node-list">
+          <article class="node reveal">
+            <div class="node-key"><span class="node-idx">01</span>CS</div>
+            <div class="node-body">
+              <p>代码是我的母语。四年,我用它搭了很多小世界。</p>
+              <figure class="node-photo">
+                <img src="assets/img/grad-2024.webp" alt="本科毕业留影" loading="lazy" width="380" height="285">
+              </figure>
+            </div>
+          </article>
+          <div class="node-rail" aria-hidden="true"></div>
+          <article class="node reveal" style="--reveal-delay: .1s">
+            <div class="node-key"><span class="node-idx">02</span>BME</div>
+            <div class="node-body">
+              <p>AI 的潮水漫上来,纯软件在退潮。我转身,申请了生物医学工程 —— 我要给代码装上会呼吸的手脚。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 站 2 · 知识库 -->
+    <section class="station" id="station-2" aria-labelledby="s2-title" data-name="知识库">
+      <div class="station-inner">
+        <p class="station-meta reveal">02 / 知识库</p>
+        <h2 class="station-title reveal" id="s2-title" style="--reveal-delay: .08s">信息不建库,就不算知识</h2>
+        <div class="video-card reveal" id="knowledge-video">
+          <video autoplay muted loop playsinline controls preload="metadata" poster="assets/video/knowledge-poster.jpg" aria-label="小红书知识库 RAG 问答演示">
+            <source src="assets/video/knowledge-demo.mp4" type="video/mp4">
+          </video>
+          <div class="video-fallback" role="alert">视频加载失败,请稍后再试。</div>
+        </div>
+        <p class="reveal">我把小红书上的碎片,建成了库。<span class="num">1087</span> 条笔记,接入 RAG —— 现在它能回答我的问题。</p>
+        <p class="reveal" style="--reveal-delay: .08s">下面这段,是我的第二大脑在工作。</p>
+        <div class="data-points reveal" style="--reveal-delay: .16s">
+          <div><span class="data-value num">1087</span><span class="data-label">篇笔记</span></div>
+          <div><span class="data-value">RAG</span><span class="data-label">问答</span></div>
+          <div><span class="data-value">小红书</span><span class="data-label">平台</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 站 3 · 孵化场 -->
+    <section class="station" id="station-3" aria-labelledby="s3-title" data-name="孵化场">
+      <div class="station-inner">
+        <p class="station-meta reveal">03 / 孵化场</p>
+        <h2 class="station-title reveal" id="s3-title" style="--reveal-delay: .08s">两件作品,都在孵化</h2>
+        <p class="reveal" style="--reveal-delay: .12s">推上线的那天,我会写在这里。</p>
+
+        <div class="project-list">
+        <article class="project reveal" style="--reveal-delay: .16s">
+          <div class="project-text">
+            <span class="status-badge"><span class="status-dot" aria-hidden="true"></span>开发中</span>
+            <h3>健康风险评估系统</h3>
+            <p>居家康养场景,内嵌 <span class="num">50</span> 个医疗计算器,支持自然语言对话完成健康风险评估。</p>
+            <p><strong>CS × BME 的第一件作品。</strong></p>
+          </div>
+          <figure class="mockup">
+            <div class="mockup-bar" aria-hidden="true">
+              <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+              <span class="mockup-addr">健康风险评估系统</span>
+            </div>
+            <img src="assets/img/project-health.webp" alt="健康风险评估系统界面截图" loading="lazy">
+          </figure>
+        </article>
+
+        <article class="project reveal" style="--reveal-delay: .2s">
+          <div class="project-text">
+            <span class="status-badge"><span class="status-dot" aria-hidden="true"></span>企划初期</span>
+            <h3>微恐乙女向文字游戏</h3>
+            <p>微恐 × 乙女 × 文字。世界观在纸上,角色已经见面了。</p>
+            <p><strong>它还没有名字。</strong></p>
+          </div>
+          <div class="project-media">
+            <div class="game-stack">
+              <figure class="paper">
+                <img src="assets/img/game-sketch.webp" alt="游戏角色设计草稿" loading="lazy">
+              </figure>
+              <figure class="paper">
+                <img src="assets/img/game-plan.webp" alt="游戏企划书节选截图" loading="lazy">
+              </figure>
+            </div>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 站 4 · 审美 -->
+    <section class="station" id="station-4" aria-labelledby="s4-title" data-name="审美">
+      <div class="station-inner">
+        <p class="station-meta reveal">04 / 审美</p>
+        <h2 class="station-title reveal" id="s4-title" style="--reveal-delay: .08s">审美,是 AI 时代的护城河</h2>
+        <p class="reveal" style="--reveal-delay: .12s">编程的门槛正在被 AI 抹平,用户第一眼留不留下,看的是审美。</p>
+        <div class="gallery reveal" style="--reveal-delay: .18s">
+          <figure class="photo" tabindex="0">
+            <img src="assets/img/photo-forbidden-city.webp" alt="北京故宫摄影" loading="lazy">
+            <figcaption class="photo-cap">摄于 北京-故宫</figcaption>
+          </figure>
+          <figure class="photo" tabindex="0">
+            <img src="assets/img/photo-xiyuan.webp" alt="杭州西园寺摄影" loading="lazy">
+            <figcaption class="photo-cap">摄于 杭州-西园寺</figcaption>
+          </figure>
+          <figure class="photo" tabindex="0">
+            <img src="assets/img/photo-gonghe.webp" alt="青海共和县摄影" loading="lazy">
+            <figcaption class="photo-cap">摄于 青海-共和县</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 站 5 · 终点站 -->
+    <section class="station station--end" id="station-5" aria-labelledby="s5-title" data-name="终点站">
+      <div class="station-inner end-content">
+        <h2 class="hero-title reveal" id="s5-title">现在我将攻读第二个学位,继续探索更多方向。</h2>
+        <p class="hero-identity reveal" style="--reveal-delay: .1s">你想认识这个人吗?</p>
+        <ul class="contact-list reveal" style="--reveal-delay: .2s">
+          <li><a href="mailto:you@example.com"><!-- TODO: 替换为真实邮箱 -->邮件</a></li>
+          <li><a href="https://www.xiaohongshu.com/" target="_blank" rel="noopener"><!-- TODO: 替换为真实主页 -->小红书</a></li>
+          <li><a href="https://github.com/" target="_blank" rel="noopener"><!-- TODO: 替换为真实主页 -->GitHub</a></li>
+        </ul>
+        <p class="end-note reveal" style="--reveal-delay: .3s">下一站,还没定。</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="scripts/track.js" defer></script>
+  <script src="scripts/navigation.js" defer></script>
+  <script src="scripts/reveal.js" defer></script>
+  <script src="scripts/interactions.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+</body>
+</html>

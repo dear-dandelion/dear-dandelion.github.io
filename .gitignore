@@ -1,0 +1,10 @@
+# 本地环境
+.claude/
+*.log
+
+# 工具链依赖
+tools/node_modules/
+
+# 系统文件
+Thumbs.db
+.DS_Store
