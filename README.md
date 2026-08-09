@@ -1,4 +1,4 @@
-# Xu JF 个人网站
+# Xu JF 个人网站 Xu is interesting!
 
 极简叙事型个人网站
 
