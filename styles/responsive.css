@@ -1,0 +1,77 @@
+/* ============================================================
+ * responsive.css — 断点降级(来源:DESIGN.md §4.3)
+ *  ≥1024 全横向轨道
+ *  768–1023 轨道保持,密度收窄
+ *  <768 竖向文档流
+ * ============================================================ */
+
+/* ---- 平板:密度收窄 ---- */
+@media (max-width: 1023px) {
+  .project-list { grid-template-columns: 1fr; gap: var(--space-5); }
+  .project-media { max-width: 320px; }
+  .gallery { grid-template-columns: 1fr 1fr; height: auto; }
+  .gallery .photo:first-child { grid-column: 1 / -1; }
+  .photo { min-height: 40vh; }
+}
+
+/* ---- 移动:竖向文档流(规格内行为,非缺陷) ---- */
+@media (max-width: 767px) {
+  html { overflow: auto; }
+
+  .track {
+    display: block;
+    height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .station {
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+    display: block;
+    padding: calc(var(--nav-h) + var(--space-5)) var(--station-pad-x)
+             var(--space-5);
+    overflow: visible;
+  }
+  .station-inner { padding: 0; }
+
+  /* 导航:仅显示当前站名 */
+  .station-nav-link { display: none; }
+  .nav-current { display: inline-block; font-size: var(--text-small); color: var(--color-ink); }
+  .nav-current .nav-num { margin-right: 6px; color: var(--color-ink-2); }
+
+  /* 站 0 */
+  .station--hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .hero-content { align-items: flex-start; text-align: left; }
+  /* 移动端标题允许换行(桌面保持单行) */
+  .hero-title { white-space: normal; }
+
+  /* 站 1 */
+  .node-key { width: 72px; }
+  .node-rail { margin-left: 35px; }
+  .node-photo { max-width: 100%; }
+
+  /* 站 2 */
+  .data-points { gap: var(--space-3); }
+  .data-value { font-size: 1.5rem; }
+
+  /* 站 4:无 hover,地点常显 */
+  .photo-cap {
+    opacity: 1;
+    transform: none;
+    position: static;
+    background: none;
+    color: var(--color-ink-2);
+    padding: 8px 0 0;
+  }
+  .photo { min-height: 0; }
+  .gallery { grid-template-columns: 1fr; gap: var(--space-3); }
+
+  /* 站 5 */
+  .contact-list { flex-wrap: wrap; justify-content: center; gap: var(--space-2) var(--space-4); }
+}

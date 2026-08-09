@@ -1,0 +1,93 @@
+/* ============================================================
+ * base.css — 重置、排版、焦点、通用
+ * ============================================================ */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  /* 桌面端页面自身不滚动,滚动交给轨道(移动端在 responsive.css 覆盖) */
+  height: 100%;
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  height: 100%;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol { list-style: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* 选中色 — 品牌细节 */
+::selection {
+  background: var(--color-selection-bg);
+  color: var(--color-selection-fg);
+}
+
+/* 焦点可见性 — WCAG 2.4.7,全站唯一焦点样式 */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* 跳过链接 */
+.skip-link {
+  position: fixed;
+  top: -48px;
+  left: var(--station-pad-x);
+  z-index: var(--z-overlay);
+  padding: 8px 16px;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  font-size: var(--text-small);
+  transition: top 0.2s var(--ease-out);
+}
+.skip-link:focus-visible { top: 8px; }
+
+/* 数字:等宽数字字形(1087 等统计数) */
+.num {
+  font-family: var(--font-latin);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 隐藏滚动条(轨道专享)— 进度条承担位置指示 */
+.scrollbar-hide { scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* 视觉减弱 — 全局关闭动效 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}

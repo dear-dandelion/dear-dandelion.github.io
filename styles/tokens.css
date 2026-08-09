@@ -1,0 +1,47 @@
+/* ============================================================
+ * tokens.css — 设计令牌(唯一来源:DESIGN.md §3.1)
+ * ============================================================ */
+:root {
+  /* 颜色 — 极简黑白 */
+  --color-bg:            #FFFFFF;
+  --color-ink:           #111111;  /* 主文本 16.7:1 */
+  --color-ink-2:         #757575;  /* 次级文本 4.6:1 ≥ AA */
+  --color-ink-3:         #BBBBBB;  /* 仅装饰线,禁用于正文 */
+  --color-focus:         #111111;
+  --color-selection-bg:  #111111;
+  --color-selection-fg:  #FFFFFF;
+
+  /* 字体 — 中文系统栈,禁止 web 中文字体(体积不可接受) */
+  --font-sans: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei",
+               "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --font-latin: "Inter", var(--font-sans);
+
+  /* 字号 — clamp 流体 */
+  --text-display: clamp(1.5rem, 4.5vw, 2.75rem); /* 站标题(与站0标题对齐) */
+  --text-h2:      clamp(1.75rem, 4vw, 2.5rem);
+  --text-h3:      1.25rem;
+  --text-body:    clamp(1rem, 1.4vw, 1.125rem);
+  --text-small:   0.875rem;
+
+  /* 间距 — 8px 基准 */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --space-6: 96px;
+
+  /* 布局 */
+  --station-pad-x: clamp(24px, 6vw, 96px);
+  --nav-h: 56px;
+
+  /* 动效 */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-base: 0.6s;
+  --dur-slow: 0.8s;
+
+  /* 层级 */
+  --z-nav: 100;
+  --z-progress: 90;
+  --z-overlay: 200;
+}
