@@ -95,10 +95,10 @@
 ### 4.2 轨道引擎(scripts/track.js)— 生产级要求
 
 - **实现方式**:原生滚动容器 `overflow-x: scroll` + `scroll-snap-type: x mandatory`,**不用 transform 平移模拟**(保证滚动位置可被浏览器恢复、键盘可导航、屏幕阅读器可理解)
-- **滚轮映射**:桌面端将 `deltaY`(垂直滚轮)映射为 `scrollLeft`(水平滚动);`deltaMode` 归一化(像素=1、行=×16、页=×viewport);`rAF` 节流合并
-- **防溢出**:滚动到首尾站时吞掉向外的滚动,防止页面垂直跳动(`overscroll-behavior: none` + 边界 clamp)
+- **滚轮交互(修订)**:纵向滚轮(deltaY)**逐站翻页** —— 阈值累加 `STEP_THRESHOLD=100px`(约一格滚轮),每满一次前进/后退一站(`scrollTo` smooth + `scrollend`/800ms 锁防连跳);`deltaMode` 归一化(像素=1、行=×16、页=×viewport)。**横向触控板(deltaX)放行原生滚动 + snap 对齐**。禁止用手动 `scrollLeft += delta` 模拟滚动 —— `scroll-snap mandatory` 会把 JS 驱动的滚动当帧吸回,该模式在 Chromium 上失效(实测)
+- **防溢出**:站级钳制(`currentStationIndex` 边界 clamp),滚动到首尾站不再前进,页面无垂直跳动(`overscroll-behavior: contain`)
 - **站状态同步**:`IntersectionObserver`(threshold 0.5)判定当前站 → 更新导航高亮、站号、URL hash(`history.replaceState`,刷新/分享可恢复定位)、`aria-current`
-- **平滑性**:`scroll-snap` 自带惯性;不叠加 JS lerp,避免双引擎冲突
+- **平滑性**:`scrollTo` smooth + `scroll-snap` 双重保证终点对齐;`prefers-reduced-motion` 下 behavior 用 `auto`
 - **触摸设备**:原生横向滑动即可工作,无需 JS 干预
 
 ### 4.3 响应式降级(styles/responsive.css)
@@ -124,7 +124,7 @@
 
 ### 5.2 站 1 跨界
 - 双节点卡:垂直堆叠,卡间一条贯穿的装饰虚线(颜色 `--color-ink-3`,仅装饰)
-- 每卡:序号(01/02)+ 关键词(CS/BME)字重 700 + 正文
+- 每卡:年份(2022/2026)+ 关键词(CS/BME)字重 700 + 正文
 - 滚动进入时逐卡 fade-up(`IntersectionObserver` 触发,offset 0.3)
 - 本科毕业照:置于 CS 卡右侧,宽 ≤380px,`filter: saturate(0.6) contrast(1.05)` 低饱和处理,配 1px `--color-ink-3` 边框,alt="本科毕业留影"
 
