@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
+const SRC = path.join(ROOT, '素材'); // 源素材统一在 素材/ 目录
 const OUT = path.join(ROOT, 'assets', 'img');
 fs.mkdirSync(OUT, { recursive: true });
 
@@ -24,7 +25,7 @@ const JOBS = [
 
 (async () => {
   for (const [src, out, size, quality, opts] of JOBS) {
-    const p = path.join(ROOT, src);
+    const p = path.join(SRC, src);
     if (!fs.existsSync(p)) { console.log(`跳过(源缺失): ${src}`); continue; }
     let img = sharp(p).rotate(); // 尊重 EXIF 方向
     if (opts.cover) {
