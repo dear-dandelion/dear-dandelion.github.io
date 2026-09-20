@@ -99,6 +99,8 @@
 - **防溢出**:站级钳制(`currentStationIndex` 边界 clamp),滚动到首尾站不再前进,页面无垂直跳动(`overscroll-behavior: contain`)
 - **站状态同步**:`IntersectionObserver`(threshold 0.5)判定当前站 → 更新导航高亮、站号、URL hash(`history.replaceState`,刷新/分享可恢复定位)、`aria-current`
 - **平滑性**:`scrollTo` smooth + `scroll-snap` 双重保证终点对齐;`prefers-reduced-motion` 下 behavior 用 `auto`
+- **半屏点击**(仅桌面轨道态):点击页面左半侧前往上一站、右半侧前往下一站;根据当前站号钳制首尾边界，首站不能再向左、末站不能再向右；链接、按钮、输入控件与视频保留原有交互，不触发换站
+- **鼠标拖动**(仅桌面轨道态):按住鼠标左键可连续横向拖动轨道，拖动时暂时关闭 scroll-snap、松开后吸附到最近站；移动超过 6px 时视为拖动并抑制随后的点击换站，避免误触
 - **触摸设备**:原生横向滑动即可工作,无需 JS 干预
 
 ### 4.3 响应式降级(styles/responsive.css)
@@ -209,7 +211,7 @@
 2. **焦点**:全站 `:focus-visible` 2px `--color-ink` 外描边 + 2px offset;键盘可完整走完六站(站牌 Tab 可达)
 3. **语义**:唯一 h1 在站 0;每站 section + aria-labelledby;站点导航 aria-current;跳过链接(跳到站 0 内容)
 4. **动效**:`prefers-reduced-motion` 下关闭 lerp/箭头动画/呼吸圆点/入场 stagger,站切换 instant
-5. **键盘横向导航**:←/→ 键站级跳转(仅桌面轨道态);监听 `keydown`,排除输入态
+5. **横向导航**:←/→ 键及半屏点击可站级跳转(仅桌面轨道态);监听 `keydown`,排除输入态；半屏点击不覆盖站内交互控件
 6. **放大 200%**:rem/clamp 单位,无固定宽度溢出(站内容 `max-width` 兜底)
 7. **图片**:全部 alt 有意义描述;装饰虚线 `aria-hidden`
 8. **视频**:播放按钮是按钮元素(`aria-label`),不自动播放,无音频突袭

@@ -67,6 +67,11 @@
   scroll-snap-type: x mandatory;
   overscroll-behavior: contain;
 }
+.track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
 
 /* ---- 站 ---- */
 .station {
